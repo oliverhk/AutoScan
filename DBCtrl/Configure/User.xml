@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="DBCtrl" xmlns="http://ibatis.apache.org/mapping" xmlns:xls="http://www.w3.org/2001/XMLSchema-instance">
+  <resultMaps>
+    <resultMap id="select_user_result" class="DBCtrl.Model.User">
+      <result property="UserId" column="userid"/>
+      <result property="UserName" column="username"/>
+      <result property="UserPwd" column="userpwd"/>
+      <result property="RoleId" column="roleid"/>
+      <result property="RoleName" column="rolename"/>
+      <result property="LevelId" column="levelid"/>
+      <result property="LevelName" column="levelname"/>
+      <result property="CreateTime" column="createtime"/>
+    </resultMap>
+  </resultMaps>
+  <statements>    
+    <insert id="InsertUser" parameterClass="DBCtrl.Model.User">
+      INSERT INTO user
+      (userid, username,userpwd,roleid,levelid,createtime)
+      VALUES
+      (#UserId#,#UserName#,#UserPwd#,#RoleId#,#LevelId#,#CreateTime#)
+    </insert>
+    
+    <select id="SelectUser" parameterClass="String" resultMap="select_user_result">
+      SELECT
+      u.userid
+      ,u.username
+      ,u.userpwd
+      ,u.roleid
+      ,r.rolename
+      ,u.levelid
+      ,v.levelname
+      ,u.createtime
+      FROM user u,role r,userlevel v
+      WHERE
+      u.roleid = r.roleid
+      and 
+      userid = #value#
+      and
+      u.levelid = v.levelid
+    </select>
+
+    <select id="SelectUserList"  resultMap="select_user_result">
+      SELECT
+      u.userid
+      ,u.username
+      ,u.userpwd
+      ,u.roleid
+      ,r.rolename
+      ,u.levelid
+      ,v.levelname
+      ,u.createtime
+      FROM user u,role r,userlevel v
+      WHERE
+      u.roleid = r.roleid
+      and
+      u.levelid = v.levelid
+    </select>
+
+    <update id="UpdateUser" parameterClass="DBCtrl.Model.User">
+      UPDATE user set
+      username = #UserName#
+      ,userpwd = #UserPwd#
+      ,roleid= #RoleId#
+      ,levelid = #LevelId#
+      WHERE
+      userid = #UserId#
+    </update>
+    <delete id="DelUserById" parameterClass="String">
+      DELETE FROM user WHERE userid=#UserId#
+    </delete>
+  </statements>
+</sqlMap>

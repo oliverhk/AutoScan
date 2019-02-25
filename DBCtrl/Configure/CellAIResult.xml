@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="DBCtrl" xmlns="http://ibatis.apache.org/mapping" xmlns:xls="http://www.w3.org/2001/XMLSchema-instance">
+  <resultMaps>
+    <resultMap id="select_cellai_result" class="DBCtrl.Model.CellAIResult">
+      <result property="Id" column="id"/>
+      <result property="SectionName" column="sectionname"/>
+      <result property="ImageName" column="image"/>
+      <result property="PixelX" column="x"/>
+      <result property="PixelY" column="y"/>
+      <result property="Score" column="score"/>
+      <result property="ScanId" column="scanid"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <select id="SelectAIResultList" resultMap="select_cellai_result">
+      SELECT
+      id
+      ,sectionname
+      ,image
+      ,x
+      ,y
+      ,score
+      ,scanid
+      FROM airesult
+    </select>
+  </statements>
+</sqlMap>

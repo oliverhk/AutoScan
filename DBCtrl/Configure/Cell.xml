@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="DBCtrl" xmlns="http://ibatis.apache.org/mapping" xmlns:xls="http://www.w3.org/2001/XMLSchema-instance">
+  <resultMaps>
+    <resultMap id="select_cell_result" class="DBCtrl.Model.Cell">
+      <result property="Id" column="id"/>
+      <result property="SectionNo" column="sectionno"/>
+      <result property="CellNo" column="cellno"/>
+      <result property="GLat" column="glat"/>
+      <result property="GLng" column="glng"/>
+      <result property="PixelX" column="pixelx"/>
+      <result property="PixelY" column="pixely"/>
+      <result property="MicX" column="micx"/>
+      <result property="MicY" column="micy"/>
+      <result property="ImgUrl" column="imgurl"/>
+      <result property="State" column="state"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <select id="SelectCellList" resultMap="select_cell_result">
+      SELECT
+      id
+      ,sectionno
+      ,cellno
+      ,glat
+      ,glng
+      ,pixelx
+      ,pixely
+      ,micx
+      ,micy
+      ,imgurl
+      ,state
+      FROM cell
+    </select>
+  </statements>
+</sqlMap>

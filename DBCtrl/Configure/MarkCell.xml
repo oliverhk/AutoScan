@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="DBCtrl" xmlns="http://ibatis.apache.org/mapping" xmlns:xls="http://www.w3.org/2001/XMLSchema-instance">
+  <resultMaps>
+    <resultMap id="select_markcell_result" class="DBCtrl.Model.MarkCell">
+      <result property="Id" column="id"/>
+      <result property="SlideId" column="slideid"/>
+      <result property="SwathId" column="swathid"/>
+      <result property="FieldId" column="fieldid"/>
+      <result property="ImageX" column="imagex"/>
+      <result property="ImageY" column="imagey"/>
+      <result property="StageX" column="stagex"/>
+      <result property="StageY" column="stagey"/>
+      <result property="TypeId" column="typeid"/>
+      <result property="AreaId" column="areaid"/>
+      <result property="UserId" column="userid"/>
+      <result property="Remarks" column="remarks"/>
+      <result property="SlideFrom" column="slidefrom"/>
+      <result property="CreateTime" column="createtime"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id="InsertMarkCell" parameterClass="DBCtrl.Model.MarkCell">
+      INSERT INTO markcell
+      (id, slideid,swathid,fieldid,imagex,imagey,stagex,stagey,typeid,areaid,userid,remarks,slidefrom,createtime)
+      VALUES
+      (#Id#,#SlideId#,#SwathId#,#FieldId#,#ImageX#,#ImageY#,#StageX#,#StageY#,#TypeId#,#AreaId#,#UserId#,#Remarks#,#SlideFrom#,#CreateTime#)
+    </insert>
+
+    <select id="SelectMarkCellById" parameterClass="int" resultMap="select_markcell_result">
+      SELECT
+      id
+      ,slideid
+      ,swathid
+      ,fieldid
+      ,imagex
+      ,imagey
+      ,stagex
+      ,stagey
+      ,typeid
+      ,areaid
+      ,userid
+      ,remarks
+      ,slidefrom
+      ,createtime
+      FROM markcell
+      WHERE
+      id = #value#
+    </select>
+
+    <select id="SelectMarkCellByTime" parameterClass="datetime" resultMap="select_markcell_result">
+      SELECT
+      id
+      ,slideid
+      ,swathid
+      ,fieldid
+      ,imagex
+      ,imagey
+      ,stagex
+      ,stagey
+      ,typeid
+      ,areaid
+      ,userid
+      ,remarks
+      ,slidefrom
+      ,createtime
+      FROM markcell
+      WHERE
+      createtime = #value#
+    </select>
+
+    <select id="SelectMarkCellList" resultMap="select_markcell_result">
+      SELECT
+      id
+      ,slideid
+      ,swathid
+      ,fieldid
+      ,imagex
+      ,imagey
+      ,stagex
+      ,stagey
+      ,typeid
+      ,areaid
+      ,userid
+      ,remarks
+      ,slidefrom
+      ,createtime
+      FROM markcell
+    </select>
+
+    <select id="SelectMarkListBySlideId" parameterClass="String" resultMap="select_markcell_result">
+      SELECT
+      id
+      ,slideid
+      ,swathid
+      ,fieldid
+      ,imagex
+      ,imagey
+      ,stagex
+      ,stagey
+      ,typeid
+      ,areaid
+      ,userid
+      ,remarks
+      ,slidefrom
+      ,createtime
+      FROM markcell
+      WHERE
+      slideid = #value#
+    </select>
+
+    <update id="UpdateMarkCell" parameterClass="DBCtrl.Model.MarkCell">
+      UPDATE markcell set
+      slideid = #SlideId#
+      ,swathid = #SwathId#
+      ,fieldid = #FieldId#
+      ,imagex = #ImageX#
+      ,imagey = #ImageY#
+      ,stagex = #StageX#
+      ,stagey = #StageY#
+      ,typeid = #TypeId#
+      ,areaid = #AreaId#
+      ,userid = #UserId#
+      ,remarks = #Remarks#
+      ,slidefrom = #SlideFrom#
+      WHERE
+      id = #Id#
+    </update>
+
+    <delete id="DelMarkCellById" parameterClass="int">
+      DELETE FROM markcell WHERE id=#value#
+    </delete>
+  </statements>
+</sqlMap>

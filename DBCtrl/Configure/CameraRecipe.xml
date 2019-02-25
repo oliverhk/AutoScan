@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="DBCtrl" xmlns="http://ibatis.apache.org/mapping" xmlns:xls="http://www.w3.org/2001/XMLSchema-instance">
+  <resultMaps>
+    <resultMap id="select_camerarecipe_result" class="DBCtrl.Model.CameraRecipe">
+      <result property="CameraRecipeId" column="camerarecipeid"/>
+      <result property="RecipeId" column="recipeid"/>
+      <result property="CameraType" column="cameratype"/>
+      <result property="OffsetX" column="offsetx"/>
+      <result property="OffsetY" column="offsety"/>
+      <result property="Width" column="width"/>
+      <result property="Height" column="height"/>
+      <result property="ExposureTime" column="exposuretime"/>
+      <result property="TriggerSource" column="triggersource"/>
+      <result property="CreateTime" column="createtime"/>
+      <result property="LastUpdate" column="lastupdate"/>
+      <result property="CreateBy" column="createby"/>
+      <result property="Gain" column="gain"/>
+      <result property="ImagePath" column="imagepath"/>
+      <result property="IsSaveImage" column="issaveimage"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id="InsertCameraRecipe" parameterClass="DBCtrl.Model.CameraRecipe">
+      INSERT INTO camerarecipe
+      (recipeid, cameratype,offsetx,offsety,width,height,exposuretime,triggersource,createtime,lastupdate,createby,gain,imagepath,issaveimage)
+      VALUES
+      (#RecipeId#,#CameraType#,#OffsetX#,#OffsetY#,#Width#,#Height#,#ExposureTime#,#TriggerSource#,#CreateTime#,#LastUpdate#,#CreateBy#,#Gain#,#ImagePath#,#IsSaveImage#)
+    </insert>
+
+    <select id="SelectCameraRecipe" parameterClass="int" resultMap="select_camerarecipe_result">
+      SELECT
+      camerarecipeid
+      ,recipeid
+      ,cameratype
+      ,offsetx
+      ,offsety
+      ,width
+      ,height
+      ,exposuretime
+      ,triggersource
+      ,createtime
+      ,lastupdate
+      ,createby
+      ,gain
+      ,imagepath
+      ,issaveimage
+      FROM camerarecipe
+      WHERE
+      recipeid = #value#
+    </select>
+
+    <select id="SelectCameraRecipeList" parameterClass="int" resultMap="select_camerarecipe_result">
+      SELECT
+      camerarecipeid
+      ,recipeid
+      ,cameratype
+      ,offsetx
+      ,offsety
+      ,width
+      ,height
+      ,exposuretime
+      ,triggersource
+      ,createtime
+      ,lastupdate
+      ,createby
+      ,gain
+      ,imagepath
+      ,issaveimage
+      FROM camerarecipe      
+    </select>
+
+    <update id="UpdateCameraRecipe" parameterClass="DBCtrl.Model.CameraRecipe">
+      UPDATE camerarecipe set
+      cameratype=#CameraType#
+      ,offsetx=#OffsetX#
+      ,offsety=#OffsetY#
+      ,width=#Width#
+      ,height=#Height#
+      ,exposuretime=#ExposureTime#
+      ,triggersource=#TriggerSource#
+      ,createtime=#CreateTime#
+      ,lastupdate=#LastUpdate#
+      ,createby=#CreateBy#
+      ,gain=#Gain#
+      ,imagepath=#ImagePath#
+      ,issaveimage=#IsSaveImage#
+      WHERE
+      recipeid = #RecipeId#
+    </update>
+    <delete id="DelCameraRecipeById" parameterClass="int">
+      DELETE FROM camerarecipe WHERE recipeid=#value#
+    </delete>
+  </statements>
+</sqlMap>

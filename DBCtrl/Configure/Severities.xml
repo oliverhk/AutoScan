@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="DBCtrl" xmlns="http://ibatis.apache.org/mapping" xmlns:xls="http://www.w3.org/2001/XMLSchema-instance">
+  <resultMaps>
+    <resultMap id="select_severities_result" class="DBCtrl.Model.Severities">
+      <result property="SeverityId" column="severityid"/>
+      <result property="Name" column="name"/>
+      <result property="ColorId" column="colorid"/>
+      <result property="LastUsed" column="lastused"/>      
+    </resultMap>
+  </resultMaps>
+  <statements>    
+    <insert id="InsertSeverities" parameterClass="DBCtrl.Model.Severities">
+      INSERT INTO severities
+      (severityid, name,colorid,lastused)
+      VALUES
+      (#SeverityId#,#Name#,#ColorId#,#LastUsed#)
+    </insert>
+    
+    <select id="SelectSeverities" parameterClass="int" resultMap="select_severities_result">
+      SELECT
+      severityid
+      ,name
+      ,colorid
+      ,lastused
+      FROM severities
+      WHERE
+      severityid = #value#
+    </select>
+
+    <select id="SelectSeveritiesList"  resultMap="select_severities_result">
+      SELECT
+      severityid
+      ,name
+      ,colorid
+      ,lastused
+      FROM severities
+    </select>
+
+    <update id="UpdateSeverities" parameterClass="DBCtrl.Model.Severities">
+      UPDATE severities set
+      severityid=#SeverityId#
+      ,name=#Name#
+      ,colorid=#ColorId#
+      ,lastused=#LastUsed#
+      WHERE
+      severityid = #SeverityId#
+    </update>
+    <delete id="DelSeveritiesById" parameterClass="int">
+      DELETE FROM severities WHERE severityid=#value#
+    </delete>
+  </statements>
+</sqlMap>

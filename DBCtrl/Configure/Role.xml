@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="DBCtrl" xmlns="http://ibatis.apache.org/mapping" xmlns:xls="http://www.w3.org/2001/XMLSchema-instance">
+  <resultMaps>
+    <resultMap id="select_role_result" class="DBCtrl.Model.Role">
+      <result property="RoleId" column="roleid"/>
+      <result property="RoleName" column="rolename"/>      
+      <result property="CreateTime" column="createtime"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id="InsertRole" parameterClass="DBCtrl.Model.Role">
+      INSERT INTO role
+      (roleid, rolename,createtime)
+      VALUES
+      (#RoleId#,#RoleName#,#CreateTime#)
+    </insert>
+
+    <select id="SelectRole" parameterClass="int" resultMap="select_role_result">
+      SELECT
+      roleid
+      ,rolename
+      ,createtime
+      FROM role
+      WHERE
+      roleid=#value#
+    </select>
+
+    <select id="SelectRoleList" parameterClass="int" resultMap="select_role_result">
+      SELECT
+      roleid
+      ,rolename
+      ,createtime
+      FROM role
+    </select>
+
+    <update id="UpdateRole" parameterClass="DBCtrl.Model.Role">
+      UPDATE Role set
+      ,rolename=#RoleName#
+      WHERE
+      roleid=#RoleId#
+    </update>
+    <delete id="DelRoleById" parameterClass="int">
+      DELETE FROM role WHERE roleid=#value#
+    </delete>
+  </statements>
+</sqlMap>

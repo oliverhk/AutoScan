@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="DBCtrl" xmlns="http://ibatis.apache.org/mapping" xmlns:xls="http://www.w3.org/2001/XMLSchema-instance">
+  <resultMaps>
+    <resultMap id="select_category_result" class="DBCtrl.Model.Category">
+      <result property="CateId" column="cateid"/>
+      <result property="CategoryName" column="categoryname"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id="InsertCategory" parameterClass="DBCtrl.Model.Category">
+      INSERT INTO category
+      (cateid, categoryname)
+      VALUES
+      (#CateId#,#CategoryName#)
+    </insert>
+
+    <select id="SelectCategory" parameterClass="int" resultMap="select_category_result">
+      SELECT
+      cateid
+      ,categoryname
+      FROM category
+      WHERE
+      cateid=#value#
+    </select>
+
+    <select id="SelectCategoryByName" parameterClass="String" resultMap="select_category_result">
+      SELECT
+      cateid
+      ,categoryname
+      FROM category
+      WHERE
+      categoryname=#value#
+    </select>
+    
+    <select id="SelectCategoryList" resultMap="select_category_result">
+      SELECT
+      cateid
+      ,categoryname
+      FROM category
+    </select>
+
+    <update id="UpdatCategory" parameterClass="DBCtrl.Model.Category">
+      UPDATE category set
+      categoryname=#CategoryName#
+      WHERE
+      cateid=#CateId#
+    </update>
+    
+    <delete id="DelCategoryById" parameterClass="int">
+      DELETE FROM category WHERE cateid=#value#
+    </delete>
+  </statements>
+</sqlMap>

@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="DBCtrl" xmlns="http://ibatis.apache.org/mapping" xmlns:xls="http://www.w3.org/2001/XMLSchema-instance">
+  <resultMaps>
+    <resultMap id="select_jobs_result" class="DBCtrl.Model.Jobs">
+      <result property="JobId" column="jobid"/>
+      <result property="Name" column="name"/>
+      <result property="RecipeId" column="recipeid"/>
+      <result property="LotId" column="lotid"/>
+      <result property="BatchId" column="batchid"/>
+      <result property="StartTime" column="starttime"/>
+      <result property="EndTime" column="endtime"/>
+      <result property="Operator" column="operator"/>
+      <result property="Grade" column="grade"/>
+      <result property="Status" column="status"/>
+      <result property="EqptId" column="eqptid"/>
+      <result property="EqptNo" column="eqptno"/>
+      <result property="Hospital" column="hospital"/>
+      <result property="PatientInfo" column="patientinfo"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id="InsertJobs" parameterClass="DBCtrl.Model.Jobs">
+      INSERT INTO jobs
+      (jobid,name,recipeid,lotid,batchid,starttime,endtime,operator,grade,status,eqptid,eqptno,hospital,patientinfo)
+      VALUES
+      (#JobId#,#Name#,#RecipeId#,#LotId#,#BatchId#,#StartTime#,#EndTime#,#Operator#,#Grade#,#Status#,#EqptId#,#EqptNo#,#Hospital#,#PatientInfo#)
+    </insert>
+
+    <select id="SelectJobs" parameterClass="long" resultMap="select_jobs_result">
+      SELECT
+      jobid
+      ,name
+      ,recipeid
+      ,lotid
+      ,batchid
+      ,starttime
+      ,endtime
+      ,operator
+      ,grade
+      ,status
+      ,eqptid
+      ,eqptno
+      ,hospital
+      ,patientinfo
+      FROM jobs
+      WHERE
+      jobid = #value#
+    </select>
+
+    <select id="SelectJobsList" parameterClass="long" resultMap="select_jobs_result">
+      SELECT
+      jobid
+      ,name
+      ,recipeid
+      ,lotid
+      ,batchid
+      ,starttime
+      ,endtime
+      ,operator
+      ,grade
+      ,status
+      ,eqptid
+      ,eqptno
+      ,hospital
+      ,patientinfo
+      FROM jobs
+    </select>
+    <select id="SelectMaxJobId" resultClass="long">
+      SELECT
+      Max(jobid)+1 as id
+      FROM jobs
+    </select>
+    <update id="UpdateJobs" parameterClass="DBCtrl.Model.Jobs">
+      UPDATE jobs set
+      name=#Name#
+      ,recipeid=#RecipeId#
+      ,lotid=#LotId#
+      ,batchid=#BatchId#
+      ,starttime=#StartTime#
+      ,endtime=#EndTime#
+      ,operator=#Operator#
+      ,grade=#Grade#
+      ,status=#Status#
+      ,eqptid=#EqptId#
+      ,eqptno=#EqptNo#
+      ,hospital=#Hospital#
+      ,patientinfo=#PatientInfo#
+      WHERE
+      jobid = #JobId#
+    </update>
+    <delete id="DelJobsById" parameterClass="long">
+      DELETE FROM jobs WHERE jobid=#JobId#
+    </delete>
+  </statements>
+</sqlMap>

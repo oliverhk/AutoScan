@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="DBCtrl" xmlns="http://ibatis.apache.org/mapping" xmlns:xls="http://www.w3.org/2001/XMLSchema-instance">
+  <resultMaps>
+    <resultMap id="select_functions_result" class="DBCtrl.Model.Functions">
+      <result property="FunctionID" column="functionid"/>
+      <result property="Description" column="description"/>
+      <result property="CreateTime" column="createtime"/>
+      <result property="CreateUser" column="createuser"/>      
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id="InsertFunctions" parameterClass="DBCtrl.Model.Functions">
+      INSERT INTO functions
+      (functionid, description,createuser,createtime)
+      VALUES
+      (#FunctionID#,#Description#,#CreateUser#,#CreateTime#)
+    </insert>
+
+    <select id="SelectFunctions" parameterClass="String" resultMap="select_functions_result">
+      SELECT
+      functionid
+      ,description
+      ,createtime
+      ,createuser
+      FROM functions
+      WHERE
+      functionid = #value#
+    </select>
+
+    <select id="SelectFunctionsList" parameterClass="String" resultMap="select_functions_result">
+      SELECT
+      functionid
+      ,description
+      ,createtime
+      ,createuser
+      FROM functions
+    </select>
+
+    <update id="UpdateFunctions" parameterClass="DBCtrl.Model.Functions">
+      UPDATE functions set
+      description=#Description#
+      WHERE
+      functionid = #FunctionID#
+    </update>
+    <delete id="DelFunctionsById" parameterClass="String">
+      DELETE FROM functions WHERE functionid=#value#
+    </delete>
+  </statements>
+</sqlMap>

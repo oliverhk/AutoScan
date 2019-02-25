@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="DBCtrl" xmlns="http://ibatis.apache.org/mapping" xmlns:xls="http://www.w3.org/2001/XMLSchema-instance">
+  <resultMaps>
+    <resultMap id="select_sysinfo_result" class="DBCtrl.Model.SysInfo">
+      <result property="FieldId" column="fieldid"/>
+      <result property="FieldName" column="fieldname"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id="InsertSysInfo" parameterClass="DBCtrl.Model.SysInfo">
+      INSERT INTO sysinfo
+      (fieldid, fieldname)
+      VALUES
+      (#FieldId#,#FieldName#)
+    </insert>
+
+    <select id="SelectSysInfo" parameterClass="String" resultMap="select_sysinfo_result">
+      SELECT
+      fieldid
+      ,fieldname
+      FROM sysinfo
+      WHERE
+      fieldid=#value#
+    </select>
+
+    <select id="SelectSysInfoList" resultMap="select_sysinfo_result">
+      SELECT
+      fieldid
+      ,fieldname
+      FROM sysinfo
+    </select>
+
+    <update id="UpdateSysInfo" parameterClass="DBCtrl.Model.SysInfo">
+      UPDATE sysinfo set
+      fieldname=#FieldName#
+      WHERE
+      fieldid=#FieldId#
+    </update>
+    
+    <delete id="DelSysInfoById" parameterClass="String">
+      DELETE FROM sysinfo WHERE fieldid=#value#
+    </delete>
+  </statements>
+</sqlMap>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="DBCtrl" xmlns="http://ibatis.apache.org/mapping" xmlns:xls="http://www.w3.org/2001/XMLSchema-instance">
+  <resultMaps>
+    <resultMap id="select_userlevel_result" class="DBCtrl.Model.UserLevel">
+      <result property="LevelId" column="levelid"/>
+      <result property="LevelName" column="levelname"/>
+      <result property="LevelDescription" column="leveldescription"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id="InsertUserLevel" parameterClass="DBCtrl.Model.UserLevel">
+      INSERT INTO userlevel
+      (levelid, levelname,leveldescription)
+      VALUES
+      (#LevelId#,#LevelName#,#LevelDescription#)
+    </insert>
+
+    <select id="SelectUserLevel" parameterClass="int" resultMap="select_userlevel_result">
+      SELECT
+      levelid
+      ,levelname
+      ,leveldescription
+      FROM userlevel
+      WHERE
+      levelid=#value#
+    </select>
+
+    <select id="SelectUserLevelList"  resultMap="select_userlevel_result">
+      SELECT
+      levelid
+      ,levelname
+      ,leveldescription
+      FROM userlevel
+    </select>
+
+    <update id="UpdateUserLevel" parameterClass="DBCtrl.Model.UserLevel">
+      UPDATE userlevel set
+      levelname=#LevelName#
+      ,leveldescription=#LevelDescription#
+      WHERE
+      levelid=#LevelId#
+    </update>
+    
+    <delete id="DelUserLevelById" parameterClass="int">
+      DELETE FROM userlevel WHERE levelid=#value#
+    </delete>
+  </statements>
+</sqlMap>

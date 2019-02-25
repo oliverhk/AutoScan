@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5E867725-01F9-41D3-B2D9-1C43C0C39999}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MainApp</RootNamespace>
+    <AssemblyName>MainApp</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Image\IICON-III %281070%29.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FlyCapture2Managed_v100, Version=2.9.3.11, Culture=neutral, PublicKeyToken=76c6583b4a4585f4, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\bin\FlyCapture2Managed_v100.dll</HintPath>
+    </Reference>
+    <Reference Include="GetPeak, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\GetPeak.dll</HintPath>
+    </Reference>
+    <Reference Include="GfPremap, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\GfPremap.dll</HintPath>
+    </Reference>
+    <Reference Include="GlobalFocusOfSinglePointROIForDll, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\bin\GlobalFocusOfSinglePointROIForDll.dll</HintPath>
+    </Reference>
+    <Reference Include="HalconHelper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\HalconHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="HOcrBarcodeInterface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\HOcrBarcodeInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="KP-ImageViewerV2, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\KP-ImageViewerV2.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\MaterialSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="MatlabHelper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\MatlabHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="MWArray, Version=2.15.1.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\MWArray.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.4.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="SpinnakerNET_v120, Version=1.13.0.33, Culture=neutral, PublicKeyToken=e3ed2bf1f221d241, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\SpinnakerNET_v120.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Auto\AutoFocus.cs" />
+    <Compile Include="Auto\AutoReview.cs" />
+    <Compile Include="Auto\AutoScan.cs" />
+    <Compile Include="Auto\IAuto.cs" />
+    <Compile Include="Entity\ConstDef.cs" />
+    <Compile Include="Entity\FocusParaEntity.cs" />
+    <Compile Include="Entity\ParaEntity.cs" />
+    <Compile Include="Entity\Sysmgmt.cs" />
+    <Compile Include="Matlab\FocusCtrl.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Recipes\IRecipe.cs" />
+    <Compile Include="Recipes\RecipeManager.cs" />
+    <Compile Include="Src\Manager.cs" />
+    <Compile Include="Src\SocketManager.cs" />
+    <Compile Include="Src\SocketServer.cs" />
+    <Compile Include="Usr\UserAccess.cs" />
+    <Compile Include="Usr\UserAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usr\UserAddForm.Designer.cs">
+      <DependentUpon>UserAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usr\UserFunctionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usr\UserFunctionForm.Designer.cs">
+      <DependentUpon>UserFunctionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usr\UserRoleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usr\UserRoleForm.Designer.cs">
+      <DependentUpon>UserRoleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinUC\LiveDisplayUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinUC\LiveDisplayUC.Designer.cs">
+      <DependentUpon>LiveDisplayUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinUC\RoiPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WinUC\RoiPanel.Designer.cs">
+      <DependentUpon>RoiPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinUI\AutoReviewTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinUI\FocusManualForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinUI\FocusManualForm.Designer.cs">
+      <DependentUpon>FocusManualForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinUI\FullImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinUI\FullImageForm.designer.cs">
+      <DependentUpon>FullImageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinUC\GlobalFocus.cs" />
+    <Compile Include="WinUC\GlobalFocusUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinUC\GlobalFocusUC.Designer.cs">
+      <DependentUpon>GlobalFocusUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinUC\LabelGapUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinUC\LabelGapUC.designer.cs">
+      <DependentUpon>LabelGapUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinUI\AutoFocus.cs" />
+    <Compile Include="WinUI\ConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinUI\ConfigForm.Designer.cs">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinUI\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinUI\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WinUI\MaintainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinUI\MaintainForm.Designer.cs">
+      <DependentUpon>MaintainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinUI\MotorManualForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinUI\MotorManualForm.Designer.cs">
+      <DependentUpon>MotorManualForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinUI\OCRLiveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinUI\OCRLiveForm.Designer.cs">
+      <DependentUpon>OCRLiveForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinUI\OperatorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinUI\OperatorForm.Designer.cs">
+      <DependentUpon>OperatorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinUI\QueryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinUI\QueryForm.Designer.cs">
+      <DependentUpon>QueryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinUI\RecipeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinUI\RecipeForm.Designer.cs">
+      <DependentUpon>RecipeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinUI\RecipeSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinUI\RecipeSelectForm.Designer.cs">
+      <DependentUpon>RecipeSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinUI\UserLogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinUI\UserLogIn.Designer.cs">
+      <DependentUpon>UserLogIn.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usr\UserAddForm.resx">
+      <DependentUpon>UserAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usr\UserFunctionForm.resx">
+      <DependentUpon>UserFunctionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usr\UserRoleForm.resx">
+      <DependentUpon>UserRoleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinUC\LiveDisplayUC.resx">
+      <DependentUpon>LiveDisplayUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinUI\FocusManualForm.resx">
+      <DependentUpon>FocusManualForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinUI\FullImageForm.resx">
+      <DependentUpon>FullImageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinUC\GlobalFocusUC.resx">
+      <DependentUpon>GlobalFocusUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinUC\LabelGapUC.resx">
+      <DependentUpon>LabelGapUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinUI\ConfigForm.resx">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinUI\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinUI\MaintainForm.resx">
+      <DependentUpon>MaintainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinUI\MotorManualForm.resx">
+      <DependentUpon>MotorManualForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinUI\OCRLiveForm.resx">
+      <DependentUpon>OCRLiveForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinUI\OperatorForm.resx">
+      <DependentUpon>OperatorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinUI\QueryForm.resx">
+      <DependentUpon>QueryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinUI\RecipeForm.resx">
+      <DependentUpon>RecipeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinUI\RecipeSelectForm.resx">
+      <DependentUpon>RecipeSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinUI\UserLogIn.resx">
+      <DependentUpon>UserLogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\006.gif" />
+    <None Include="Resources\folder.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\check.png" />
+    <None Include="Image\view.png" />
+    <None Include="Image\Save32.png" />
+    <None Include="Image\FileOpen.png" />
+    <None Include="Image\add.png" />
+    <None Include="Image\edit.png" />
+    <None Include="Image\Delete.png" />
+    <Content Include="Image\IICON-III %281070%29.ico" />
+    <None Include="Image\set.png" />
+    <None Include="Image\recipe.png" />
+    <None Include="Image\query.png" />
+    <None Include="Image\maintain.png" />
+    <None Include="Image\main.png" />
+    <None Include="Image\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonLibrary\CommonLibrary.csproj">
+      <Project>{28accb6c-2103-4673-ae8c-f4150d3809ce}</Project>
+      <Name>CommonLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBCtrl\DBCtrl.csproj">
+      <Project>{bdb5e60a-ebc1-4cff-aab1-653f3f6ca76e}</Project>
+      <Name>DBCtrl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HWCtrl\HWCtrl.csproj">
+      <Project>{8986eab9-ff0e-48ae-87d5-526e7252bf50}</Project>
+      <Name>HWCtrl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{b06a41f4-7d89-43ff-8a5b-f4bd55d01bd2}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

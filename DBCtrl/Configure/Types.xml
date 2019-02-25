@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="DBCtrl" xmlns="http://ibatis.apache.org/mapping" xmlns:xls="http://www.w3.org/2001/XMLSchema-instance">
+  <resultMaps>
+    <resultMap id="select_types_result" class="DBCtrl.Model.Types">
+      <result property="TypeId" column="typeid"/>
+      <result property="CateId" column="cateid"/>
+      <result property="CellType" column="celltype"/>
+      <result property="CellCode" column="cellcode"/>
+      <result property="Description" column="description"/>
+      <result property="ColorStr" column="colorstr"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id="InsertTypes" parameterClass="DBCtrl.Model.Types">
+      INSERT INTO types
+      (typeid, cateid, celltype, cellcode, description, colorstr)
+      VALUES
+      (#TypeId#,#CateId#,#CellType#,#CellCode#,#Description#,#ColorStr#)
+    </insert>
+
+    <select id="SelectTypesById" parameterClass="int" resultMap="select_types_result">
+      SELECT
+      typeid
+      ,cateid
+      ,celltype
+      ,cellcode
+      ,description
+      ,colorstr
+      FROM types
+      WHERE
+      typeid=#value#
+    </select>
+
+    <select id="SelectTypesByName" parameterClass="String" resultMap="select_types_result">
+      SELECT
+      typeid
+      ,cateid
+      ,celltype
+      ,cellcode
+      ,description
+      ,colorstr
+      FROM types
+      WHERE
+      celltype=#value#
+    </select>
+
+    <select id="SelectTypesListByCategory" parameterClass="int" resultMap="select_types_result">
+      SELECT
+      typeid
+      ,cateid
+      ,celltype
+      ,cellcode
+      ,description
+      ,colorstr
+      FROM types
+      WHERE
+      cateid=#value#
+    </select>
+    
+    <select id="SelectTypesList"  resultMap="select_types_result">
+      SELECT
+      typeid
+      ,cateid
+      ,celltype
+      ,cellcode
+      ,description
+      ,colorstr
+      FROM types
+    </select>
+
+    <update id="UpdateTypes" parameterClass="DBCtrl.Model.Types">
+      UPDATE types set
+      cateid=#CateId#
+      ,celltype=#CellType#
+      ,cellcode=#CellCode#
+      ,description=#Description#
+      ,colorstr=#ColorStr#
+      WHERE
+      typeid=#TypeId#
+    </update>
+
+    <delete id="DelTypesById" parameterClass="int">
+      DELETE FROM types WHERE typeid=#value#
+    </delete>
+
+    <delete id="DelTypesByCellType" parameterClass="String">
+      DELETE FROM types WHERE celltype=#value#
+    </delete>
+
+    <delete id="DelTypesByCateId" parameterClass="int">
+      DELETE FROM types WHERE cateid=#value#
+    </delete>
+  </statements>
+</sqlMap>

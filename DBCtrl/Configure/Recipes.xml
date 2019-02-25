@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="DBCtrl" xmlns="http://ibatis.apache.org/mapping" xmlns:xls="http://www.w3.org/2001/XMLSchema-instance">
+  <resultMaps>
+    <resultMap id="select_recipes_result" class="DBCtrl.Model.Recipes">
+      <result property="RecipeId" column="recipeid"/>
+      <result property="Name" column="name"/>
+      <result property="Version" column="version"/>
+      <result property="CreateTime" column="createtime"/>
+      <result property="LastUpdate" column="lastupdate"/>
+      <result property="CreateBy" column="createby"/>
+      <result property="IsDefault" column="is_default"/>
+    </resultMap>    
+  </resultMaps>
+  <statements>
+    <insert id="InsertRecipes" parameterClass="DBCtrl.Model.Recipes">
+      INSERT INTO recipes
+      (recipeid, name,version,createtime,lastupdate,createby,is_default)
+      VALUES
+      (#RecipeId#,#Name#,#Version#,#CreateTime#,#LastUpdate#,#CreateBy#,#IsDefault#)
+    </insert>
+
+    <select id="SelectRecipes" parameterClass="int" resultMap="select_recipes_result">
+      SELECT
+      recipeid
+      ,name
+      ,version
+      ,createtime
+      ,lastupdate
+      ,createby
+      ,is_default
+      FROM recipes
+      WHERE
+      recipeid = #value#
+    </select>
+
+    <select id="SelectRecipesList" parameterClass="int" resultMap="select_recipes_result">
+      SELECT
+      recipeid
+      ,name
+      ,version
+      ,createtime
+      ,lastupdate
+      ,createby
+      ,is_default
+      FROM recipes      
+    </select>
+    <select id="SelectDefaultRecipe" resultMap="select_recipes_result">
+      SELECT
+      recipeid
+      ,name
+      ,version
+      ,createtime
+      ,lastupdate
+      ,createby
+      ,is_default
+      FROM recipes
+      where is_default = 1;
+    </select>
+    <select id="SelectMaxRecipeId" resultClass="int">
+      SELECT
+      Max(recipeid)+1 as id     
+      FROM recipes
+    </select>
+
+    <update id="UpdateRecipes" parameterClass="DBCtrl.Model.Recipes">
+      UPDATE recipes set
+      name = #Name#
+      ,version=#Version#
+      ,lastupdate = #LastUpdate#
+      ,is_default= #IsDefault#
+      WHERE
+      recipeid = #RecipeId#
+    </update>
+    <update id="UpdateRecipesSetDefault" parameterClass="int">
+      UPDATE recipes set      
+      is_default= 1
+      WHERE
+      recipeid = #value#
+    </update>
+    <update id="UpdateRecipesSetDefaultNull">
+      UPDATE recipes set
+      is_default= 0      
+    </update>
+    <delete id="DelRecipesById" parameterClass="int">
+      DELETE FROM recipes WHERE recipeid=#value#
+    </delete>
+  </statements>
+</sqlMap>

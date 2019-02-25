@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="DBCtrl" xmlns="http://ibatis.apache.org/mapping" xmlns:xls="http://www.w3.org/2001/XMLSchema-instance">
+  <resultMaps>
+    <resultMap id="select_functionrole_result" class="DBCtrl.Model.FunctionRole">
+      <result property="SerialId" column="serialid"/>
+      <result property="FunctionId" column="functionid"/>
+      <result property="RoleId" column="role"/>
+      <result property="CreateTime" column="createtime"/>
+      <result property="CreateUser" column="createuser"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id="InsertFunctionRole" parameterClass="DBCtrl.Model.FunctionRole">
+      INSERT INTO functionrole
+      (functionid, role,createuser,createtime)
+      VALUES
+      (#FunctionId#,#RoleId#,#CreateUser#,#CreateTime#)
+    </insert>
+
+    <select id="SelectFunctionRole" parameterClass="int" resultMap="select_functionrole_result">
+      SELECT
+      serialid
+      ,functionid
+      ,role
+      ,createtime
+      ,createuser
+      FROM functionrole
+      WHERE
+      serialid = #value#
+    </select>
+    <select id="SelectFunctionRoleByRole" parameterClass="int" resultMap="select_functionrole_result">
+      SELECT
+      serialid
+      ,functionid
+      ,role
+      ,createtime
+      ,createuser
+      FROM functionrole
+      WHERE
+      role = #value#
+    </select>
+
+    <select id="SelectFunctionRoleList" parameterClass="String" resultMap="select_functionrole_result">
+      SELECT
+      serialid
+      ,functionid
+      ,role
+      ,createtime
+      ,createuser
+      FROM functionrole
+    </select>
+
+    <update id="UpdateFunctionRole" parameterClass="DBCtrl.Model.FunctionRole">
+      UPDATE functionrole set
+      functionid = #FunctionId#
+      ,role=#RoleId#
+      WHERE
+      serialid = #SerialId#
+    </update>
+    <delete id="DelFunctionRoleById" parameterClass="int">
+      DELETE FROM functionrole WHERE serialid=#SerialId#
+    </delete>
+  </statements>
+</sqlMap>

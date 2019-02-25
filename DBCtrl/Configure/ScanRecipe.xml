@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="DBCtrl" xmlns="http://ibatis.apache.org/mapping" xmlns:xls="http://www.w3.org/2001/XMLSchema-instance">
+  <resultMaps>
+    <resultMap id="select_scanrecipe_result" class="DBCtrl.Model.ScanRecipe">
+      <result property="InspRecipeId" column="insprecipeid"/>
+      <result property="RecipeId" column="recipeid"/>
+      <result property="ZeroX" column="zerox"/>
+      <result property="ZeroY" column="zeroy"/>
+      <result property="SwathRows" column="swathrows"/>
+      <result property="SwathColumns" column="swathcolumns"/>
+      <result property="SwathWidth" column="swathwidth"/>
+      <result property="SwathHeight" column="swathheight"/>
+      <result property="SpeedX" column="speedx"/>
+      <result property="SpeedY" column="speedy"/>
+      <result property="CreateTime" column="createtime"/>
+      <result property="LastUpdate" column="lastupdate"/>
+      <result property="CreateBy" column="createby"/>
+      <result property="ScanZPostion" column="scanzpostion"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id="InsertScanRecipe" parameterClass="DBCtrl.Model.ScanRecipe">
+      INSERT INTO scanrecipe
+      (recipeid,zerox,zeroy,swathrows,swathcolumns,swathwidth,swathheight,speedx,speedy,createtime,lastupdate,createby,scanzpostion)
+      VALUES
+      (#RecipeId#,#ZeroX#,#ZeroY#,#SwathRows#,#SwathColumns#,#SwathWidth#,#SwathHeight#,#SpeedX#,#SpeedY#,#CreateTime#,#LastUpdate#,#CreateBy#,#ScanZPostion#)
+    </insert>
+
+    <select id="SelectScanRecipe" parameterClass="int" resultMap="select_scanrecipe_result">
+      SELECT
+      insprecipeid
+      ,recipeid
+      ,zerox
+      ,zeroy
+      ,swathrows
+      ,swathcolumns
+      ,swathwidth
+      ,swathheight
+      ,speedx
+      ,speedy
+      ,createtime
+      ,lastupdate
+      ,createby
+      ,scanzpostion
+      FROM scanrecipe
+      WHERE
+      recipeid = #value#
+    </select>
+
+    <select id="SelectScanRecipeList" parameterClass="int" resultMap="select_scanrecipe_result">
+      SELECT
+      insprecipeid
+      ,recipeid
+      ,zerox
+      ,zeroy
+      ,swathrows
+      ,swathcolumns
+      ,swathwidth
+      ,swathheight
+      ,speedx
+      ,speedy
+      ,createtime
+      ,lastupdate
+      ,createby
+      ,scanzpostion
+      FROM scanrecipe
+    </select>
+
+    <update id="UpdateScanRecipe" parameterClass="DBCtrl.Model.ScanRecipe">
+      UPDATE scanrecipe set
+      zerox=#ZeroX#
+      ,zeroy=#ZeroY#
+      ,swathrows=#SwathRows#
+      ,swathcolumns=#SwathColumns#
+      ,swathwidth=#SwathWidth#
+      ,swathheight=#SwathHeight#
+      ,speedx=#SpeedX#
+      ,speedy=#SpeedY#
+      ,lastupdate=#LastUpdate#
+      ,createby=#CreateBy#
+      ,scanzpostion=#ScanZPostion#
+      WHERE
+      recipeid = #RecipeId#
+    </update>
+    <delete id="DelScanRecipeById" parameterClass="int">
+      DELETE FROM scanrecipe WHERE recipeid=#value#
+    </delete>
+  </statements>
+</sqlMap>

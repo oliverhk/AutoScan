@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BDB5E60A-EBC1-4CFF-AAB1-653F3F6CA76E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DBCtrl</RootNamespace>
+    <AssemblyName>DBCtrl</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IBatisNet.Common, Version=1.6.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\IBatisNet.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.DataMapper, Version=1.6.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\IBatisNet.DataMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.4.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=2.0.11.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAO\BaseSqlMapDao.cs" />
+    <Compile Include="DAO\CameraRecipeDao.cs" />
+    <Compile Include="DAO\CategoryDao.cs" />
+    <Compile Include="DAO\CellAIResultDao.cs" />
+    <Compile Include="DAO\CellDao.cs" />
+    <Compile Include="DAO\ControlRecipeDao.cs" />
+    <Compile Include="DAO\FunctionRoleDao.cs" />
+    <Compile Include="DAO\FunctionsDao.cs" />
+    <Compile Include="DAO\JobsDao.cs" />
+    <Compile Include="DAO\MarkAreaDao.cs" />
+    <Compile Include="DAO\MarkCellDao.cs" />
+    <Compile Include="DAO\RecipesDao.cs" />
+    <Compile Include="DAO\RoleDao.cs" />
+    <Compile Include="DAO\ScanRecipeDao.cs" />
+    <Compile Include="DAO\SeveritiesDao.cs" />
+    <Compile Include="DAO\SysInfoDao.cs" />
+    <Compile Include="DAO\TypesDao.cs" />
+    <Compile Include="DAO\UserDao.cs" />
+    <Compile Include="DAO\UserLevelDao.cs" />
+    <Compile Include="Model\CameraRecipe.cs" />
+    <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\Cell.cs" />
+    <Compile Include="Model\CellAIResult.cs" />
+    <Compile Include="Model\ControlRecipe.cs" />
+    <Compile Include="Model\FunctionRole.cs" />
+    <Compile Include="Model\Functions.cs" />
+    <Compile Include="Model\Jobs.cs" />
+    <Compile Include="Model\MarkArea.cs" />
+    <Compile Include="Model\MarkCell.cs" />
+    <Compile Include="Model\Recipes.cs" />
+    <Compile Include="Model\Role.cs" />
+    <Compile Include="Model\ScanRecipe.cs" />
+    <Compile Include="Model\Severities.cs" />
+    <Compile Include="Model\SysInfo.cs" />
+    <Compile Include="Model\Types.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserLevel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Configure\providers.config" />
+    <None Include="Configure\SqlMap.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configure\CameraRecipe.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configure\Cell.xml" />
+    <Content Include="Configure\CellAIResult.xml" />
+    <Content Include="Configure\ControlRecipe.xml" />
+    <Content Include="Configure\FunctionRole.xml" />
+    <Content Include="Configure\Functions.xml" />
+    <Content Include="Configure\Jobs.xml" />
+    <Content Include="Configure\MarkArea.xml" />
+    <Content Include="Configure\MarkCell.xml" />
+    <Content Include="Configure\Recipes.xml" />
+    <Content Include="Configure\Role.xml" />
+    <Content Include="Configure\ScanRecipe.xml" />
+    <Content Include="Configure\Severities.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configure\SysInfo.xml" />
+    <Content Include="Configure\Types.xml" />
+    <Content Include="Configure\User.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configure\UserLevel.xml" />
+    <Content Include="Configure\Category.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{b06a41f4-7d89-43ff-8a5b-f4bd55d01bd2}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy $(ProjectDir)Configure\*.xml ..\configure\  /y
+xcopy $(ProjectDir)Configure\*.config ..\bin\  /y</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

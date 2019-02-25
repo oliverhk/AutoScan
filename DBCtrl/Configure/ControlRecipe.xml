@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="DBCtrl" xmlns="http://ibatis.apache.org/mapping" xmlns:xls="http://www.w3.org/2001/XMLSchema-instance">
+  <resultMaps>
+    <resultMap id="select_ctrlrecipe_result" class="DBCtrl.Model.ControlRecipe">
+      <result property="CtrlRecipeId" column="ctrlrecipeid"/>
+      <result property="RecipeId" column="recipeid"/>
+      <result property="CamDelayTime" column="camdelaytime"/>
+      <result property="CamPlusTime" column="camplustime"/>
+      <result property="LightDelayTime" column="lightdelaytime"/>
+      <result property="LightPlusTime" column="lightplustime"/>          
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <insert id="InsertCtrlRecipe" parameterClass="DBCtrl.Model.ControlRecipe">
+      INSERT INTO controlrecipe
+      (recipeid,camdelaytime,camplustime,lightdelaytime,lightplustime)
+      VALUES
+      (#RecipeId#,#CamDelayTime#,#CamPlusTime#,#LightDelayTime#,#LightPlusTime#)
+    </insert>
+
+    <select id="SelectCtrlRecipe" parameterClass="int" resultMap="select_ctrlrecipe_result">
+      SELECT
+      ctrlrecipeid
+      ,recipeid
+      ,camdelaytime
+      ,camplustime
+      ,lightdelaytime
+      ,lightplustime
+      FROM controlrecipe
+      WHERE
+      recipeid = #value#
+    </select>
+
+    <select id="SelectCtrlRecipeList" parameterClass="int" resultMap="select_ctrlrecipe_result">
+      SELECT
+      ctrlrecipeid
+      ,recipeid
+      ,camdelaytime
+      ,camplustime
+      ,lightdelaytime
+      ,lightplustime
+      FROM controlrecipe      
+    </select>
+
+    <update id="UpdateCtrlRecipe" parameterClass="DBCtrl.Model.ControlRecipe">
+      UPDATE controlrecipe set
+       camdelaytime=#CamDelayTime#
+      ,camplustime=#CamPlusTime#
+      ,lightdelaytime=#LightDelayTime#
+      ,lightplustime=#LightPlusTime#      
+      WHERE
+      recipeid = #RecipeId#
+    </update>
+    <delete id="DelCtrlRecipeById" parameterClass="int">
+      DELETE FROM controlrecipe WHERE recipeid=#value#
+    </delete>
+  </statements>
+</sqlMap>
